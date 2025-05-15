@@ -13,24 +13,29 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
-      padding: 2rem;
+      justify-content: flex-start; /* changed from center */
+      min-height: 100vh;
+      margin: 0;
+      padding: 2rem 1rem;
       white-space: pre;
       position: relative;
+      overflow: hidden;
     }
     .ascii {
       margin-bottom: 2rem;
     }
     .countdown {
       font-size: 2rem;
-      margin: 1rem 0;
+      margin: 2rem 0;
+      z-index: 2;
     }
     .footer {
-      margin-top: 2rem;
+      margin-top: auto;
       font-size: 1.2rem;
+      z-index: 2;
     }
     #ascii-banner {
+      margin-top: 1rem; /* optional spacing */
       color: #00ff00;
       font-family: monospace;
       white-space: pre;
@@ -40,6 +45,7 @@
         0 1px green;
       animation: glitch 1s infinite;
       font-size: clamp(0.5rem, 2vw, 1.1rem); /* Responsive font size */
+      z-index: 2;
     }
 
     @keyframes glitch {
@@ -60,6 +66,7 @@
       background: rgba(0, 255, 0, 0.1);
       pointer-events: none;
       animation: glitch-flicker 0.2s infinite;
+      z-index: 1;
     }
 
     @keyframes glitch-flicker {
@@ -88,6 +95,14 @@
       width: 10px;
       background-color: #00ff00;
       animation: blink 1s step-end infinite;
+    }
+
+    #noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: none;
     }
   </style>
 </head>
