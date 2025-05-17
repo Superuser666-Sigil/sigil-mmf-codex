@@ -120,6 +120,8 @@ Sigil already includes:
 - Audit-bound runtime scaffolding
 - Cryptographic session and license enforcement
 
+### Find out more at the dev blog: https://mmf-sigil-codex.blogspot.com/
+
 Future modules will extend runtime ethics and semantic integrity.
 
 ---
