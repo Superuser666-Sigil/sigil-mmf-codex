@@ -127,4 +127,4 @@ Future modules will extend runtime ethics and semantic integrity.
 
 **Keywords**: AI alignment, runtime enforcement, LOA, trust protocol, modular infrastructure, Rust, epistemic systems, audit-based AI
 
-# Find out more at the dev blog: https://mmf-sigil-codex.blogspot.com/
+> Find out more at the dev blog: https://mmf-sigil-codex.blogspot.com/
