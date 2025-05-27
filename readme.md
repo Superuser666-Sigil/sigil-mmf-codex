@@ -1,130 +1,127 @@
-
 # An Open Technical Note to Eric Schmidt (TED 2025)
 
-**Regarding:** “The AI Revolution Is Underhyped” – TED Talk, 2025
+**Topic:** "The AI Revolution Is Underhyped" – TED Talk, 2025
 
-Dr. Schmidt,
+Dr. Schmidt
 
-You said we need a new class of AI infrastructure—modular, enforceable, and aligned with human values at runtime. I couldn’t agree more.
+You mentioned that we require a new generation of AI infrastructure that's modular, enforceable, and value-aligned at runtime. I couldn't have agreed more.
 
-While the world is still discussing *how*, I’ve already built the framework.
+While the world is still debating *how*, I've already constructed the framework.
 
-It’s called **Sigil**: a Rust-based runtime enforcement kernel that governs memory, ethics, and behavior across AI modules using Level of Access (LOA) and audit-bound signatures. Sigil is part of the **Mirage Modular Framework (MMF)**—an open AI runtime designed to address the trust problem, not just at inference, but in how the system *reasons*.
+It’s **Sigil**: a Rust kernel based on runtime enforcement that oversees memory, ethics, and behavior of AI modules through Level of Access (LOA) and audit-bound signatures. Sigil is a component of the **Mirage Modular Framework (MMF)**–an open runtime AI created to solve the problem of trust, not simply at the point of inference, but in how the system **reasons**.
 
-Its architecture is governed by one rule:
+Its architecture is controlled by a single rule
 
-> **Rule Zero**: If an output cannot explain itself, it has no trust.
+> **Rule Zero**: A piece of output that cannot explain itself has no trust.
 
-This isn’t a pitch. It’s a signal.
+It's not a pitch. It's a signal.
 
-If you want to see the blueprint, I’ll show it. If not, no harm. Sigil’s already moving.
+If you'd like to view the blueprint, I can show it to you. Otherwise, no problem. Sigil's already in motion.
 
 —  
 **Dave Tofflemire**  
-Developer, MMF + Sigil Protocol
+MMF & Sigil Protocol Developer
 
 ---
 
 ## What Is Sigil?
 
-Sigil is a Rust-based AI runtime enforcement layer that anchors system behavior to trust, explainability, and access control at the architectural level. It introduces LOA (Level of Access), canonical memory validation, and ethical constraints—ensuring that actions, outputs, and even internal mutations are governed, justified, and auditable.
+Sigil is a Rust-based runtime enforcement layer that grounds system behavior in trust, explainability, and access control at the architecture layer. It adds LOA (Level of Access), canonical memory validation, and ethical constraints—providing a guarantee that actions, outputs, and even internal changes are controlled, justified, and audit-friendly.
 
 ---
 
 ## The Philosophical Foundations of Sigil  
 *A Justification for Trust, Truth, and Control in a Modular AI Runtime*
 
-Sigil is more than infrastructure. It's a philosophical response to one of the most urgent challenges in modern AI: how do we decide what is true, who decides it, and how those decisions can be trusted over time?
+Sigil is not just infrastructure. It's a philosophical answer to one of the most pressing challenges of modern AI: how do we determine what's true, who makes that determination, and how that can be trusted over time?
 
-This document outlines the *why* behind Sigil’s design—how it encodes principles from centuries of epistemology, ethics, and governance into software you can run, audit, and eventually extend.
+This document describes the *why* of Sigil's design—how it embodies values from hundreds of years of epistemology, ethics, and governance in a piece of code you can execute, audit, and ultimately build upon.
 
 ---
 
 ### 1. Epistemic Hygiene — How Sigil Defines "Truth"
 
-> "If it cannot be validated, it cannot be Canon."
+> "If it can't be verified, it can't make it into the Canon."
 
-Sigil treats truth as a provenance-bound structure. Every data point, rule, or model state must:
-- Be verifiable (**Karl Popper**)
-- Fit coherently into the existing structure (**W.V.O. Quine**)
+Sigil regards truth as a structure bound to a provenance. Each data point, rule, or model state must:
+- Be testable (**Karl Popper**)
+- Coherently fit into the pre-existing structure (**W.V.O. Quine**)
 - Change only under supervised paradigm shifts (**Thomas Kuhn**)
 
-Canonical data is not editable on a whim. Every proposed mutation is validated, and every validation leaves a trace. You cannot overwrite the past—only build upon it with quorum.
+Canonical data cannot be edited at whim. Each proposed mutation is verified and each verification has a trace. The past cannot be over-written—all of it can only be added to with quorum.
 
-**Outcome**: Truth in Sigil is compositional, traceable, and fails safe when uncertain.
+**Result**: Truth in Sigil is traceable, compositional, and fails safe where it is uncertain.
 
 ---
 
 ### 2. Governance — Who Has the Right to Decide?
 
-> "Power is not given. It is leased, explicitly."
+> "Power isn't granted. It is rented, out in the open."
 
-Sigil implements a layered authority model called LOA (Level of Access), built around principles of:
+Sigil has a layered authority model known as LOA (Level of Access), based on the following principles:
 - Distributed power (**Michel Foucault**)
-- Fair governance and access (**John Rawls**)
-- Trust earned through interaction, not claim (**David Hume**)
+- Just rule and access (**John Rawls**)
+- Faith achieved through experience, not assertion (**David Hume**)
 
-Every permission—read, write, administer—requires cryptographic proof of authority. These aren’t hidden in config files; they’re part of the protocol. Even the system’s root identity must follow the same rules.
+All permissions—read, write, administer—are cryptographic attestations of authority. These aren’t buried in config files; they’re part of the protocol. The root identity of the system has to abide by the same rules too.
 
-**Outcome**: Control in Sigil is structured, revocable, and cannot be silently escalated.
-
----
-
-### 3. Ethical Enforcement — How Sigil Handles Right vs. Wrong
-
-> "No AI should act without knowing why."
-
-While full ethical rule evaluation is under development, Sigil is built to support:
-- Non-negotiable moral constraints (**Immanuel Kant**)
-- Conflict resolution under constrained choices (**Judith Jarvis Thomson**, **Philippa Foot**)
-- Runtime audit of every decision made under uncertainty
-
-Sigil will reject actions based on encoded values—such as blocking model updates that introduce systemic bias or pausing decisions if harm calculus cannot be resolved.
-
-**Outcome**: Sigil is not a moral oracle—but it is a moral enforcer, by design.
+**Outcome**: Sigil's control is ordered, reversible, and cannot escalate silently.
 
 ---
 
-### 4. Semantic Mutation — When Language Becomes Law
+### 3. Ethical Enforcement — How Sigil Approaches Right vs. Wrong
 
-> "You can't mutate what you can't understand."
+> "No AI must act before it knows why."
 
-Sigil’s next major evolution focuses on semantic contradiction detection and linguistic integrity—inspired by:
+Although full ethical rule assessment is still in development, Sigil is constructed to assist with:
+- Unbending moral limits (**Immanuel Kant**)
+- Conflict resolution under constrained options (**Philippa Foot**, **Judith Jarvis Thomson**)
+- Runtime audit of each decision under conditions of uncertainty
+
+Sigil will reject actions based on the encoded values—like blocking model updates that impose systematic bias or suspending decisions if harm calculus cannot be decided.
+
+**Result**: Sigil is no moral oracle—but it's a moral enforcer by nature.
+
+---
+
+### 4. Semantic Mutation — Language Turned into Law
+
+> "You cannot mutate that which you do not comprehend."
+
+Sigil's next considerable development deals with semantic contradiction detection and linguistic coherence—influenced by:
 - **Bertrand Russell** (self-referential contradiction)
 - **Ludwig Wittgenstein** (context-bound meaning)
 - **Alfred Tarski** (layered meta-truth validation)
 
-This module will evaluate Canon not just as syntax, but as meaning-bearing structure. Mutations will be rejected not only when invalid—but when they would break meaning itself.
+This module will not just examine Canon in syntax, but in meaning-carrying structure. Mutations will not just be rejected when invalid—but when they violate meaning.
 
-**Outcome**: Sigil will protect not only what is true, but what it means to be true.
+**Result**: Sigil will safeguard not just that which is true, but that which constitutes it to be true.
 
 ---
 
 ## The Bottom Line
 
-Sigil isn't just software—it's a philosophical stance:
+Sigil isn't software—it's a philosophical position:
 - That truth requires structure.  
-- That authority must be earned.  
-- That actions must be accountable.  
-- And that meaning is part of the system, not just its output.
+- Authority has to be earned.  
+- That actions must have consequences.  
+- And that meaning is a part of the system, not its output.
 
-When you run Sigil, you're not just executing a program. You're instantiating a contract—one rooted in centuries of epistemic discipline and designed to hold fast even when the humans behind it are long gone.
+If you execute Sigil, you're not simply running a program. You're bringing to life a contract—one based on centuries of epistemic rigor and built to remain firm even after the humans who created it are dead.
 
 ---
 
 ## Implementation Snapshot
 
-Sigil already includes:
-- Canon file validation with explicit status mapping
-- Role-based access control via LOA traits
-- Audit-bound runtime scaffolding
-- Cryptographic session and license enforcement
+Sigil already has:
+- Canon document validation with clear mapping of status  
+- Role-based access control through LOA characteristics  
+- Audit-bound runtime scaffolding  
+- Cryptographic session and license enforcement  
 
-
-Future modules will extend runtime ethics and semantic integrity.
+Upcoming modules will expand runtime ethics and semantic integrity.
 
 ---
 
-**Keywords**: AI alignment, runtime enforcement, LOA, trust protocol, modular infrastructure, Rust, epistemic systems, audit-based AI
-
-> Find out more at the dev blog: https://mmf-sigil-codex.blogspot.com/
+**Keywords**: runtime enforcement, LOA, trust protocol, modular infrastructure, Rust, epistemic systems, audit-based AI  
+Find out more at the developer blog: https://mmf-sigil-codex.blogspot.com/
