@@ -8,8 +8,8 @@
   <!-- SEO Meta Tags -->
   <meta name="title" content="Sigil-MMF Codex | Modular AI Runtime for Ethical Enforcement">
   <meta name="description" content="Explore the Sigil-MMF Codex, a modular AI runtime built in Rust for ethical enforcement, audit-bound behavior, and runtime memory governance. Powered by Rule Zero.">
-  <meta name="keywords" content="Sigil, MMF, Sigil Protocol, modular AI runtime, Rust AI, AI ethics, Rule Zero, open source AI, runtime enforcement, audit system, Mirage Modular Framework, distributed trust, AI infrastructure">
   <meta name="author" content="Superuser666-Sigil">
+  <meta name="robots" content="index, follow">
   <meta property="og:title" content="Sigil-MMF Codex | Modular AI Runtime for Ethical Enforcement">
   <meta property="og:description" content="The official Sigil Codex — a Rust-powered AI runtime framework aligned with human values through modular, enforceable infrastructure.">
   <meta property="og:url" content="https://superuser666-sigil.github.io/sigil-mmf-codex/">
@@ -20,7 +20,6 @@
   <meta name="twitter:title" content="Sigil-MMF Codex | Modular AI Runtime for Ethical Enforcement">
   <meta name="twitter:description" content="Explore the Sigil-MMF Codex, a modular AI runtime built in Rust for ethical enforcement, audit-bound behavior, and runtime memory governance.">
   <meta name="twitter:image" content="https://superuser666-sigil.github.io/sigil-mmf-codex/favicon.png">
-  <meta name="robots" content="index, follow">
 
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap" rel="stylesheet">
@@ -40,30 +39,33 @@
       position: relative;
       overflow: hidden;
     }
+
     canvas {
       position: fixed;
       top: 0;
       left: 0;
       pointer-events: none;
     }
+
     #sigil-matrix { z-index: 0; }
     #noise-overlay { z-index: 1; }
 
-    .ascii {
-      margin-bottom: 2rem;
-    }
+    .ascii { margin-bottom: 2rem; }
     .countdown {
       font-size: 2rem;
       margin-top: 2rem;
       margin-bottom: 2rem;
       z-index: 2;
     }
+
     .footer {
       margin-top: 2rem;
       margin-bottom: 2rem;
       font-size: 1.2rem;
       z-index: 2;
+      text-align: center;
     }
+
     #ascii-banner {
       margin-top: 1rem;
       color: #00ff00;
@@ -125,16 +127,9 @@
     }
 
     @media (max-width: 768px) {
-      body {
-        padding: 1rem 0.5rem;
-      }
-      .countdown {
-        font-size: 1.4rem;
-      }
-      .footer {
-        font-size: 1rem;
-        text-align: center;
-      }
+      body { padding: 1rem 0.5rem; }
+      .countdown { font-size: 1.4rem; }
+      .footer { font-size: 1rem; }
       #ascii-banner {
         font-size: clamp(0.4rem, 1.8vw, 0.9rem);
         white-space: normal;
