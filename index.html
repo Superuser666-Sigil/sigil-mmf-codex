@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SIGIL: Terminalized Countdown</title>
 
-  <!-- SEO Meta Tags for Sigil-MMF Codex -->
+  <!-- SEO Meta Tags -->
   <meta name="title" content="Sigil-MMF Codex | Modular AI Runtime for Ethical Enforcement">
   <meta name="description" content="Explore the Sigil-MMF Codex, a modular AI runtime built in Rust for ethical enforcement, audit-bound behavior, and runtime memory governance. Powered by Rule Zero.">
   <meta name="keywords" content="Sigil, MMF, Sigil Protocol, modular AI runtime, Rust AI, AI ethics, Rule Zero, open source AI, runtime enforcement, audit system, Mirage Modular Framework, distributed trust, AI infrastructure">
@@ -15,7 +15,6 @@
   <meta property="og:url" content="https://superuser666-sigil.github.io/sigil-mmf-codex/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://superuser666-sigil.github.io/sigil-mmf-codex/favicon.png">
-  <meta property="og:site_name" content="Sigil-MMF Codex">
   <meta name="theme-color" content="#0f0f0f">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sigil-MMF Codex | Modular AI Runtime for Ethical Enforcement">
@@ -47,12 +46,9 @@
       left: 0;
       pointer-events: none;
     }
-    #sigil-matrix {
-      z-index: 0;
-    }
-    #noise-overlay {
-      z-index: 1;
-    }
+    #sigil-matrix { z-index: 0; }
+    #noise-overlay { z-index: 1; }
+
     .ascii {
       margin-bottom: 2rem;
     }
@@ -73,10 +69,7 @@
       color: #00ff00;
       font-family: monospace;
       white-space: pre;
-      text-shadow: 
-        1px 0 red,
-        -1px 0 blue,
-        0 1px green;
+      text-shadow: 1px 0 red, -1px 0 blue, 0 1px green;
       animation: glitch 1s infinite;
       font-size: clamp(0.5rem, 2vw, 1.1rem);
       z-index: 2;
@@ -130,13 +123,30 @@
       background-color: #00ff00;
       animation: blink 1s step-end infinite;
     }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem 0.5rem;
+      }
+      .countdown {
+        font-size: 1.4rem;
+      }
+      .footer {
+        font-size: 1rem;
+        text-align: center;
+      }
+      #ascii-banner {
+        font-size: clamp(0.4rem, 1.8vw, 0.9rem);
+        white-space: normal;
+        word-break: break-word;
+      }
+    }
   </style>
 </head>
 
 <body>
   <canvas id="sigil-matrix"></canvas>
   <canvas id="noise-overlay"></canvas>
-
   <div class="glitch-layer"></div>
 
   <div id="ascii-banner">
@@ -166,7 +176,7 @@
 
   <script>
     const countdownElement = document.getElementById("countdown");
-    const launchTime = new Date("2025-010-01T00:00:00Z").getTime();
+    const launchTime = new Date("2025-10-01T00:00:00Z").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -192,10 +202,9 @@
   <script>
     const matrixCanvas = document.getElementById('sigil-matrix');
     const matrixCtx = matrixCanvas.getContext('2d');
-    matrixCanvas.width = window.innerWidth;
-    matrixCanvas.height = window.innerHeight;
 
-    const fontSize = 20;
+    const isMobile = window.innerWidth <= 768;
+    let fontSize = isMobile ? 14 : 20;
     const animationSpeed = 40;
     const fontFace = '"UnifrakturCook", monospace';
     const fullPromptChance = 0.01;
@@ -213,8 +222,15 @@
     ];
 
     const matrixText = prompts.join('').replace(/\s+/g, '');
-    const columns = Math.floor(matrixCanvas.width / fontSize);
-    const drops = Array(columns).fill(1);
+    let columns = Math.floor(window.innerWidth / fontSize);
+    let drops = Array(columns).fill(1);
+
+    function resizeMatrixCanvas() {
+      matrixCanvas.width = window.innerWidth;
+      matrixCanvas.height = window.innerHeight;
+      columns = Math.floor(matrixCanvas.width / fontSize);
+      drops = Array(columns).fill(1);
+    }
 
     function drawMatrix() {
       matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.04)';
@@ -242,6 +258,8 @@
     }
 
     setInterval(drawMatrix, animationSpeed);
+    window.addEventListener('resize', resizeMatrixCanvas);
+    resizeMatrixCanvas();
   </script>
 </body>
 </html>
