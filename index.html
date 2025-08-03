@@ -24,6 +24,8 @@
   <meta name="robots" content="index, follow">
 
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook&display=swap" rel="stylesheet">
+
   <style>
     body {
       background-color: #000;
@@ -32,12 +34,24 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start; /* changed from center */
+      justify-content: flex-start;
       min-height: 100vh;
       margin: 0;
       padding: 2rem 1rem;
       position: relative;
       overflow: hidden;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+    #sigil-matrix {
+      z-index: 0;
+    }
+    #noise-overlay {
+      z-index: 1;
     }
     .ascii {
       margin-bottom: 2rem;
@@ -55,7 +69,7 @@
       z-index: 2;
     }
     #ascii-banner {
-      margin-top: 1rem; /* optional spacing */
+      margin-top: 1rem;
       color: #00ff00;
       font-family: monospace;
       white-space: pre;
@@ -64,7 +78,7 @@
         -1px 0 blue,
         0 1px green;
       animation: glitch 1s infinite;
-      font-size: clamp(0.5rem, 2vw, 1.1rem); /* Responsive font size */
+      font-size: clamp(0.5rem, 2vw, 1.1rem);
       z-index: 2;
     }
 
@@ -116,17 +130,13 @@
       background-color: #00ff00;
       animation: blink 1s step-end infinite;
     }
-
-    #noise-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
   </style>
 </head>
+
 <body>
+  <canvas id="sigil-matrix"></canvas>
+  <canvas id="noise-overlay"></canvas>
+
   <div class="glitch-layer"></div>
 
   <div id="ascii-banner">
@@ -146,19 +156,17 @@
          #######           ###     ###    ###  ########   ########     ###    ##        #######       ###        ########## ###     ###  ###            
   </div>
 
-<div class="footer typing">
-  This is the revolution. Not televised; terminalized.
-</div>
+  <div class="footer typing">
+    This is the revolution. Not televised; terminalized. Now funded by Lambda AI Research.
+  </div>
 
-<div class="countdown" id="countdown">
-  Initializing<span class="cursor"></span>
-</div>
-
-  <canvas id="noise-overlay"></canvas>
+  <div class="countdown" id="countdown">
+    Initializing<span class="cursor"></span>
+  </div>
 
   <script>
     const countdownElement = document.getElementById("countdown");
-    const launchTime = new Date("2025-08-01T00:00:00Z").getTime();
+    const launchTime = new Date("2025-010-01T00:00:00Z").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -179,30 +187,61 @@
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
+  </script>
 
-    const canvas = document.getElementById('noise-overlay');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  <script>
+    const matrixCanvas = document.getElementById('sigil-matrix');
+    const matrixCtx = matrixCanvas.getContext('2d');
+    matrixCanvas.width = window.innerWidth;
+    matrixCanvas.height = window.innerHeight;
 
-    function generateNoise() {
-      const imageData = ctx.createImageData(canvas.width, canvas.height);
-      for (let i = 0; i < imageData.data.length; i += 4) {
-        const value = Math.random() * 255;
-        imageData.data[i] = value;     // Red
-        imageData.data[i + 1] = value; // Green
-        imageData.data[i + 2] = value; // Blue
-        imageData.data[i + 3] = 50;    // Alpha
+    const fontSize = 20;
+    const animationSpeed = 40;
+    const fontFace = '"UnifrakturCook", monospace';
+    const fullPromptChance = 0.01;
+
+    const prompts = [
+      'Sigil-MMF Codex', 'Verifiable Memory', 'Genesis Trace',
+      'Mutational Imprint', 'Audit-bound Behavior', 'Rule Zero Enforcer',
+      'Key-by-Key Trust', 'Cognitive Accountability', 'Runtime Governance',
+      'Transparent Mutation', 'Explanation Chain', 'Line-by-line Trust',
+      'Signal of Intent', 'Immutable Trace', 'Code with Why',
+      'Cryptographic Accountability', 'Synthetic Oversight', 'Trust as Code',
+      'Signed Runtime', 'Memory Artifact', 'Mirage Modular Framework',
+      'Rust-based Core', 'Deterministic Audit', 'Zero-Trust Runtime',
+      'Zero-Trust Envelope', 'Superuser666-Sigil'
+    ];
+
+    const matrixText = prompts.join('').replace(/\s+/g, '');
+    const columns = Math.floor(matrixCanvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+
+    function drawMatrix() {
+      matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+      matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+      matrixCtx.font = `${fontSize}px ${fontFace}`;
+
+      for (let i = 0; i < drops.length; i++) {
+        let text;
+        if (Math.random() < fullPromptChance) {
+          text = prompts[Math.floor(Math.random() * prompts.length)];
+          matrixCtx.fillStyle = '#AAFFFF';
+        } else {
+          text = matrixText[Math.floor(Math.random() * matrixText.length)];
+          matrixCtx.fillStyle = '#FF4D00';
+        }
+
+        matrixCtx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > matrixCanvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
       }
-      ctx.putImageData(imageData, 0, 0);
     }
 
-    function loopNoise() {
-      generateNoise();
-      requestAnimationFrame(loopNoise);
-    }
-
-    loopNoise();
+    setInterval(drawMatrix, animationSpeed);
   </script>
 </body>
 </html>
